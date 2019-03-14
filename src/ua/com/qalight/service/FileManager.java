@@ -43,7 +43,7 @@ public class FileManager {
 		}
 		
 		
-		return (Map<String, Double>).currencyEntity  ;
+		return  currencyEntity;
 	}
 	
 	public static void writeCurrencyValuesToFile(CurrencyEntity currency, Map<String, Double> currencyMap) {
