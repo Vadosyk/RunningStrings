@@ -1,4 +1,4 @@
-package ua.com.qalight.Entity;
+package ua.com.qalight.entity;
 
 import java.io.Serializable;
 
@@ -30,6 +30,11 @@ public class CurrencyEntity implements Serializable{
 	}
 
 	public CurrencyEntity() {
+	}
+	
+	@Override
+	public String toString() {
+		return currency + "-" + value;
 	}
 
 }

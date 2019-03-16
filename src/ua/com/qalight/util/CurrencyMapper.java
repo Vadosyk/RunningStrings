@@ -5,8 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import ua.com.qalight.Entity.Currency;
-import ua.com.qalight.Entity.CurrencyEntity;
+import ua.com.qalight.entity.Currency;
+import ua.com.qalight.entity.CurrencyEntity;
+
 
 public class CurrencyMapper {
 

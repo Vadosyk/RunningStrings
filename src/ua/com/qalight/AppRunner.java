@@ -3,7 +3,7 @@ package ua.com.qalight;
 import java.util.List;
 import java.util.Map;
 
-import ua.com.qalight.Entity.CurrencyEntity;
+import ua.com.qalight.entity.CurrencyEntity;
 import ua.com.qalight.service.FileManager;
 import ua.com.qalight.util.CurrencyMapper;
 

@@ -1,6 +1,6 @@
 package ua.com.qalight.service;
 
-import ua.com.qalight.Entity.CurrencyEntity;
+import ua.com.qalight.entity.CurrencyEntity;
 
 public class CalcService {
 

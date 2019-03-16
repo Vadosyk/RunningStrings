@@ -1,4 +1,4 @@
-package ua.com.qalight.Entity;
+package ua.com.qalight.entity;
 
 public enum Currency {
 
