@@ -11,21 +11,21 @@ public class AppRunner {
 
 	public static void main(String[] args) {
 		
-		runWithTimeout(24);
+		runWithTimeout(2);
 		
 	}
 	
-	static void runWithTimeout(int hours) {
+	static void runWithTimeout(int minutes) {
 		while (true) {
 			Map<String, Double> currencyMap = FileManager.readInputCurrencyVaues();
 			List<CurrencyEntity> currencyEntities = CurrencyMapper.getFromMap(currencyMap);
 			
-			for (CurrencyEntity currencyEntity : currencyEntities) {
-				FileManager.writeCurrencyValuesToFile(currencyEntity, currencyMap);
-			}
+			
+				FileManager.writeCurrencyValuesToFile(currencyEntities);
+			
 			
 			try {
-				Thread.sleep(1000*60*60*hours);
+				Thread.sleep(1000 * 60 * minutes);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

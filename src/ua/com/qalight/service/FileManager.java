@@ -1,17 +1,13 @@
 package ua.com.qalight.service;
 
 import java.io.BufferedReader;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
-
-import ua.com.qalight.entity.ConnectionLog;
-import ua.com.qalight.entity.Currency;
 import ua.com.qalight.entity.CurrencyEntity;
 
 public class FileManager {
@@ -37,23 +33,29 @@ public class FileManager {
 			){
 			String line = "";
 			while((line = bufferedReader.readLine()) != null) {
-				String[] words = line.split(" ");
-				String currency = String.valueOf(words[0]);
-				Double value = Double.valueOf(words[1]);
-			
-				currencys.put(currency, value);
+				String[] velues = line.split("," + " ");
+				currencys.put(velues[0], Double.valueOf(velues[1]));
 			}
-		} catch (Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		return currencys ;
+		return currencys;
 	}
 	
-	public static void writeCurrencyValuesToFile(CurrencyEntity currency, Map<String, Double> currencyMap) {
+	public static void writeCurrencyValuesToFile(List<CurrencyEntity> currencys) {
 		
-		try (FileWriter fileWriter = new FileWriter(OUTPUT_FILE_PATH)){
-			fileWriter.write(currency.toString() + currencyMap + "\n");
+		try (FileWriter fileWriter = new FileWriter(OUTPUT_FILE_PATH, false)){
+			String outVelues = "";
+			for (CurrencyEntity currencyEntity : currencys) {
+				outVelues += currencyEntity.getCurrency().getShortName() + "(" 
+				+ currencyEntity.getCurrency().getSymbol() + ")"
+				+ " - " + CalcService.getBuyPrice(currencyEntity)
+				+ "/" + CalcService.getSellPrice(currencyEntity)
+				+ " - " + currencyEntity.getValue() + "\n";
+				
+			}
+			fileWriter.write(outVelues);
 			fileWriter.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
